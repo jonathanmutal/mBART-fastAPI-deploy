@@ -27,4 +27,4 @@ Let's see if the image is running:
     docker ps -as
 
 ## how to send request to the api? Example
-    $ curl --request POST --url http://localhost:8000/translate --header 'Content-Type: application/json' --data '{ "transcriptions": ["Es gibt Silber wo gar nicht kann aussprechen aber jetzt mal schauen es daheim ist vor allem durch wichtig."], "id": 100}'
+    $ curl --request POST --url http://localhost:8000/translate --header 'Content-Type: application/json' --data '{"input": ["<sentence 1>"], "id": 100}'
