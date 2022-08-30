@@ -1,0 +1,5 @@
+mBART:
+  model_path: "models/mBART"
+  num_beams: 32
+  id: 100
+  GPU: true
