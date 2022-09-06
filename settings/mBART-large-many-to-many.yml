@@ -1,5 +1,5 @@
 mBART:
-  model_path: "models/mBART"
+  model_path: "facebook/mbart-large-50-many-to-many-mmt"
   source_lang: "en_XX"
   target_lang: "es_XX"
   num_beams: 32

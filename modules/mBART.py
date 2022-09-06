@@ -22,10 +22,14 @@ class mBART:
         configuration: it's a dictionary where contains some of the hyperparameters on decoding.
         """
         self.config = configuration
-        self.config += AutoConfig.from_pretrained(self.config["model_path"])
+        self.autoConfigmBART = AutoConfig.from_pretrained(self.config["model_path"])
         self.model = MBartForConditionalGeneration.from_pretrained(self.config["model_path"])
-        self.tokenizer = MBart50TokenizerFast.from_pretrained(self.config["model_path"], use_fast=True)
-        logger.info(self.tokenizer.src_lang)
+        self.tokenizer = MBart50TokenizerFast.from_pretrained(
+                            self.config["model_path"],
+                            use_fast=True, 
+                            src_lang=self.config["src_lang"],
+                            tgt_lang=self.config["tgt_lang"]
+                        )
         # if we want to use a GPU
         if self.config['GPU']:
             if torch.cuda.is_available():
@@ -59,7 +63,7 @@ class mBART:
                         return_tensors="pt",
                         truncation=True,
                         padding=True,
-                        max_length=self.conf.max_length
+                        max_length=self.autoConfigmBART.max_length
                     )
 
         if self.config["GPU"]:

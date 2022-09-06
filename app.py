@@ -18,7 +18,8 @@ from fastapi import FastAPI, Request
 
 
 ## models initialization
-modelsConfiguration = load_model_settings('settings/models.yml')
+## change the name of the file for the example
+modelsConfiguration = load_model_settings('settings/mBART-large-many-to-many.yml')
 mBARTModel = mBART(modelsConfiguration["mBART"])
 
 # Initialize an instance of FastAPI
@@ -32,7 +33,7 @@ app = FastAPI(
     version="0.0.1",
     contact={
         "name": "Jonathan Mutal",
-        "url": "https://www.unige.ch/fti/en/faculte/departements/dtim/membrestim/mutal//",
+        "url": "https://www.unige.ch/fti/en/faculte/departements/dtim/membrestim/mutal/",
         "email": "jonathan.mutal@unige.ch",
     },
     license_info={
@@ -63,7 +64,7 @@ async def log_requests(request: Request, call_next):
 @app.get("/healthy")
 async def root():
     """
-    A get healthy to see if everything is working well.
+    A healthy method to verify that everything works well.
     """
     return {'status': 200}
 
